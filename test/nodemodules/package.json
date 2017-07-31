@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "events": "^1.1.1",
+    "os-browserify": "^0.3.0"
+  }
+}

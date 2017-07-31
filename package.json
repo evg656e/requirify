@@ -1,0 +1,38 @@
+{
+  "name": "@evg656e/requirify",
+  "version": "0.0.1",
+  "description": "Node-style require for browser-like JavaScript environments",
+  "main": "dist/require.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evg656e/requirify"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "test": "qmltestrunner -input test"
+  },
+  "keywords": [
+    "babel",
+    "qml",
+    "require",
+    "browserify"
+  ],
+  "author": "evg656e <evg656e@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-standalone": "^6.25.0",
+    "browserify": "^14.4.0",
+    "chai": "^4.1.0",
+    "core-js": "^2.4.1",
+    "events": "^1.1.1",
+    "gulp": "^3.9.1",
+    "mocha": "^3.4.2",
+    "qml-polyfill": "0.0.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
