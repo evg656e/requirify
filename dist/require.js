@@ -2468,7 +2468,7 @@ var node_modules = 'node_modules';
 
 function nodeModulePaths(start) {
     if (!start)
-        return [path.join('.', node_modules)];
+        return [path.join('.', node_modules)].concat(require.paths);
     var parts = start.split(path.sep);
     var dirs = [];
     for (var i = parts.length - 1; i >= 0; i--) {
@@ -2484,7 +2484,7 @@ function nodeModulePaths(start) {
         }
         dirs.push(dir);
     }
-    return dirs;
+    return dirs.concat(require.paths);
 }
 
 function loadAsNodeModule(id, start) {
@@ -2529,6 +2529,15 @@ require.cache = {};
 
 require.transform = function(content, filename) {
     return content;
+};
+
+require.paths = [];
+
+//! \see https://github.com/patrick-steele-idem/app-module-path-node
+require.addPath = function(dir) {
+    if (!dir.endsWith(node_modules))
+        dir = path.join(dir, node_modules);
+    require.paths.push(dir);
 };
 
 exports.require = require;
