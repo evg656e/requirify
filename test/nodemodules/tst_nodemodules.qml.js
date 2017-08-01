@@ -1,13 +1,13 @@
 Qt.include('../../dist/require.js');
-var os = require('os');
-var Widget = require('./lib/widget.js');
 
 function test_os(test) {
+    var os = require('os');
     test.verify(typeof os !== 'undefined');
     test.compare(os.platform(), 'browser');
 }
 
 function test_widget(test) {
+    var Widget = require('./lib/widget.js');
     test.verify(typeof Widget !== 'undefined');
     var widget = new Widget();
     test.verify(typeof widget.on !== 'undefined');
@@ -22,4 +22,12 @@ function test_widget(test) {
         test.compare(y, 100);
     });
     widget.click(100, 100);
+}
+
+function test_addPath(test) {
+    var clone = require('clone');
+    test.verify(typeof clone === 'undefined');
+    require.addPath('../..');
+    clone = require('clone');
+    test.verify(typeof clone !== 'undefined');
 }

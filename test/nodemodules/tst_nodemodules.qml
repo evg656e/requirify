@@ -13,4 +13,8 @@ TestCase {
     function test_widget() {
         Test.test_widget(test);
     }
+
+    function test_addPath() {
+        Test.test_addPath(test);
+    }
 }
