@@ -1,6 +1,6 @@
 {
   "name": "@evg656e/requirify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node-style require for browser-like JavaScript environments",
   "main": "dist/require.js",
   "repository": {
@@ -31,7 +31,7 @@
     "events": "^1.1.1",
     "gulp": "^3.9.1",
     "mocha": "^3.4.2",
-    "qml-polyfill": "0.0.1",
+    "polyfill-qml": "0.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

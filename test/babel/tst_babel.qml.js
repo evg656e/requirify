@@ -1,5 +1,5 @@
 Qt.include('../../dist/require.js');
-require('../../node_modules/qml-polyfill');
+require('../../node_modules/polyfill-qml');
 require('../../node_modules/core-js/fn/object/set-prototype-of');
 var Babel = require('../../dist/babel.qml');
 require.transform = function(content) {
