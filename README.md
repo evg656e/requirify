@@ -18,7 +18,7 @@ You can find some code examples in <https://github.com/evg656e/broadcast-example
 
 Enable local file support:
   * Chrome: run `chrome --allow-file-access-from-files`
-  * Firefox: go to `about:config`, set `security.fileuri.strict_origin_policy` to `false` (you will probably want to create seperate profile for this)
+  * Firefox: go to `about:config`, set `security.fileuri.strict_origin_policy` to `false` (you will probably want to create separate profile for this)
 
 Add link to requirify to HTML page: `<script src="./node_modules/@evg656e/requirify/dist/require.js"></script>` (change paths to appropriate for you project structure).
 
@@ -103,7 +103,7 @@ Window {
             console.log('Button clicked:', target.text);
         });
         btn.click();
-        // you can access to QML items from JS, e.g.:
+        // you can access QML items from JS, e.g.:
         var btn2 = new Lib.Button('Click me', window); // <-- you can use QML Window properties and methods within JS code
     }
 }
