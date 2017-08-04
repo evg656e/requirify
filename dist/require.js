@@ -2368,7 +2368,7 @@ function openFile(fileUrl) {
         if (isFirefox)
             request.overrideMimeType('text/plain'); //! \see https://bugzilla.mozilla.org/show_bug.cgi?id=311724#c19
         request.open('GET', fileUrl, false);
-        request.setRequestHeader('Require-Id', fileUrl);
+        request.setRequestHeader('Require-Path', fileUrl);
         request.send();
         return request.responseText;
     }

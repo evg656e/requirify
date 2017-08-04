@@ -111,7 +111,7 @@ Window {
 
 ### Node.js HTTP server
 
-To make work `require` with server-side generated HTML pages, handle `request-path` header in your HTTP server:
+To make work `require` with server-side generated HTML pages, handle `require-path` header in your HTTP server:
 ```js
 const http = require('http');
 const url = require('url');
@@ -119,10 +119,10 @@ const fs = require('fs');
 
 http.createServer(function(req, res) {
     // add this block (don't use this in production!)
-    const requestPath = req.headers['request-path'];
-    if (requestPath) {
+    const requirePath = req.headers['require-path'];
+    if (requirePath) {
         res.writeHead(200);
-        fs.createReadStream(requestPath).on('error', () => {
+        fs.createReadStream(requirePath).on('error', () => {
             res.writeHead(404)
             res.end()
         }).pipe(res);
