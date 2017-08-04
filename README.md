@@ -20,7 +20,8 @@ Enable local file support:
   * Chrome: run `chrome --allow-file-access-from-files`
   * Firefox: go to `about:config`, set `security.fileuri.strict_origin_policy` to `false` (you will probably want to create seperate profile for this)
 
-Add link to requirify to HTML page: `<script src="./node_modules/@evg656e/requirify/dist/require.js"></script>` (change paths to appropriate for you project structure)
+Add link to requirify to HTML page: `<script src="./node_modules/@evg656e/requirify/dist/require.js"></script>` (change paths to appropriate for you project structure).
+
 Now you can access Node-like modules within your page:
 ```js
 var Button = require('./lib/button');
@@ -108,7 +109,7 @@ Window {
 }
 ```
 
-### Node server
+### Node.js HTTP server
 
 To make work `require` with server-side generated HTML pages, handle `request-path` header in your HTTP server:
 ```js
