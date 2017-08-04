@@ -2368,6 +2368,7 @@ function openFile(fileUrl) {
         if (isFirefox)
             request.overrideMimeType('text/plain'); //! \see https://bugzilla.mozilla.org/show_bug.cgi?id=311724#c19
         request.open('GET', fileUrl, false);
+        request.setRequestHeader('Require-Id', fileUrl);
         request.send();
         return request.responseText;
     }
@@ -2375,18 +2376,6 @@ function openFile(fileUrl) {
         // console.log('Error open file:', fileUrl);
     }
 }
-
-function openFileCached(fileUrl) {
-    if (openFileCached.cache.hasOwnProperty(fileUrl)) {
-        // console.log('Opening chached file:', fileUrl);
-        return openFileCached.cache[fileUrl];
-    }
-    var contents = openFile(fileUrl);
-    openFileCached.cache[fileUrl] = contents;
-    return contents;
-}
-
-openFileCached.cache = {};
 
 function loadFile(filename) {
     filename = path.normalize(filename);
