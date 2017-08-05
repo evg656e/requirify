@@ -1,6 +1,6 @@
 {
   "name": "@evg656e/requirify",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Node-style require for browser-like JavaScript environments",
   "main": "dist/require.js",
   "repository": {
