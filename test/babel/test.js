@@ -1,5 +1,5 @@
 var Babel = require('../../node_modules/babel-standalone');
-require.transform = function(content) {
+require.extensions['.js'] = function(content) {
     return Babel.transform(content, { presets: ['es2015'] }).code;
 };
 var Person = require('./lib/person').default;

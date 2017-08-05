@@ -2,7 +2,7 @@ Qt.include('../../dist/require.js');
 require('../../node_modules/polyfill-qml');
 require('../../node_modules/core-js/fn/object/set-prototype-of');
 var Babel = require('../../dist/babel.qml');
-require.transform = function(content) {
+require.extensions['.js'] = function(content) {
    return Babel.transform(content, { presets: ['es2015'] }).code;
 };
 var Person = require('./lib/person').default;

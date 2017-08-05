@@ -2394,14 +2394,14 @@ function loadFile(filename) {
 
     var threw = true;
     try {
-        var pathname = path.extname(filename);
-        if (pathname === '.js'
-            || require.extensions.hasOwnProperty(pathname)) {
+        var extname = path.extname(filename);
+        var transform = require.extensions[extname];
+        if (transform) {
             if (typeof Qt === 'object') {
                 // we should use eval in qml because qml objects won't work with Function code execution (check test/qmlitems)
                 eval(
                     '(function(exports, require, module, __filename, __dirname) {\n' +
-                    require.transform(content, filename) +
+                    transform(content, filename) +
                     '\n}.call(module.exports, module.exports, require.bind({ parentdir: dirname }), module, filename, dirname))'
                 );
             }
@@ -2409,13 +2409,13 @@ function loadFile(filename) {
                 // if (!content.endsWith('\n'))
                 //     content += '\n'; // qml js engine will throw an error in case of // comment at the end of file without newline
                 Function(
-                    'exports', 'require', 'module', '__filename', '__dirname', require.transform(content, filename)
+                    'exports', 'require', 'module', '__filename', '__dirname', transform(content, filename)
                 ).call(
                     module.exports, module.exports, require.bind({ parentdir: dirname }), module, filename, dirname
                 );
             }
         }
-        else if (pathname === '.json') {
+        else if (extname === '.json') {
             module.exports = JSON.parse(content);
         }
         else {
@@ -2517,10 +2517,6 @@ function require(id) {
 
 require.cache = {};
 
-require.transform = function(content, filename) {
-    return content;
-};
-
 require.paths = [];
 
 //! \see https://github.com/patrick-steele-idem/app-module-path-node
@@ -2530,7 +2526,11 @@ require.addPath = function(dir) {
     require.paths.push(dir);
 };
 
-require.extensions = {};
+require.extensions = {
+    '.js': function(content) {
+        return content;
+    }
+};
 
 exports.require = require;
 

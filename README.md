@@ -144,7 +144,7 @@ You can prototype with ES6 modules, using [babel-standalone](https://www.npmjs.c
 Enable ES6 in HTML JS:
 ```js
 var Babel = require('./node_modules/babel-standalone');
-require.transform = function(content) {
+require.extensions['.js'] = function(content) {
     return Babel.transform(content, { presets: ['es2015'] }).code;
 };
 var Foo = require('./lib/foo').default; // <- foo contains ES6 code and uses ES6 modules (import/export)
@@ -154,7 +154,7 @@ Enable ES6 in QML JS:
 ```js
 Qt.include('./node_modules/@evg656e/requirify/dist/require.js');
 var Babel = require('./node_modules/@evg656e/requirify/dist/babel.qml'); // <- use patched version of babel-standalone from requirify, standard version won't work because of QML JS engine bugs
-require.transform = function(content) {
+require.extensions['.js'] = function(content) {
    return Babel.transform(content, { presets: ['es2015'] }).code;
 };
 var Foo = require('./lib/foo').default;
