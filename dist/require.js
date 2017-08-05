@@ -2433,8 +2433,14 @@ function loadFile(filename) {
 
 function loadAsFile(filename) {
     // console.log('loadAsFile()', filename);
-    return loadFile(filename)
-        || loadFile(filename + '.js');
+    var ret = loadFile(filename);
+    if (ret)
+        return ret;
+    for (var extname in require.extensions) {
+        ret = loadFile(filename + extname);
+        if (ret)
+            return ret;
+    }
 }
 
 function loadIndex(dirname) {
