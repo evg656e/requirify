@@ -20,7 +20,11 @@ Enable local file support:
   * Chrome: run `chrome --allow-file-access-from-files`
   * Firefox: go to `about:config`, set `security.fileuri.strict_origin_policy` to `false` (you will probably want to create separate profile for this)
 
-Add link to requirify to HTML page: `<script src="./node_modules/@evg656e/requirify/dist/require.js"></script>` (change paths to appropriate for you project structure).
+Add link to requirify to HTML page:
+```html
+<!--  Change paths appropriate to your project structure. -->
+<script src="./node_modules/@evg656e/requirify/dist/require.js"></script>
+```
 
 Now you can access Node-like modules within your page:
 ```js
@@ -135,9 +139,9 @@ Now JS-files will be send from HTTP server (including modules from `node_modules
 
 ### ES6 and Babel
 
-You can prototype with ES6 modules, using [babel-standalone](https://www.npmjs.com/package/babel-standalone) for Browsers and QML, and (babel-register)[https://www.npmjs.com/package/babel-register] for Node.js.
+You can prototype with ES6 modules, using [babel-standalone](https://www.npmjs.com/package/babel-standalone) for Browsers and QML, and [babel-register](https://www.npmjs.com/package/babel-register) for Node.js.
 
-To enable ES6 in HTML JS:
+Enable ES6 in HTML JS:
 ```js
 var Babel = require('./node_modules/babel-standalone');
 require.transform = function(content) {
@@ -146,7 +150,7 @@ require.transform = function(content) {
 var Foo = require('./lib/foo').default; // <- foo contains ES6 code and uses ES6 modules (import/export)
 ```
 
-To enable ES6 in QML JS:
+Enable ES6 in QML JS:
 ```js
 Qt.include('./node_modules/@evg656e/requirify/dist/require.js');
 var Babel = require('./node_modules/@evg656e/requirify/dist/babel.qml'); // <- use patched version of babel-standalone from requirify, standard version won't work because of QML JS engine bugs
@@ -156,7 +160,7 @@ require.transform = function(content) {
 var Foo = require('./lib/foo').default;
 ```
 
-To enable ES6 in Node:
+Enable ES6 in Node:
 ```js
 require('babel-register');
 const Foo = require('./lib/foo').default;
